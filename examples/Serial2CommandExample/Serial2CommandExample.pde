@@ -1,12 +1,14 @@
-// Demo Code for SerialCommand Library
+// Demo Code for Serial2Command Library
 // Steven Cogswell
 // May 2011
 
-#include <SerialCommand.h>
+//add support for serial2
+
+#include <Serial2Command.h>
 
 #define arduinoLED 13   // Arduino LED on board
 
-SerialCommand sCmd;     // The demo SerialCommand object
+Serial2Command s2Cmd;     // The demo SerialCommand object
 
 void setup() {
   pinMode(arduinoLED, OUTPUT);      // Configure the onboard LED for output
@@ -15,16 +17,16 @@ void setup() {
   Serial.begin(9600);
 
   // Setup callbacks for SerialCommand commands
-  sCmd.addCommand("ON",    LED_on);          // Turns LED on
-  sCmd.addCommand("OFF",   LED_off);         // Turns LED off
-  sCmd.addCommand("HELLO", sayHello);        // Echos the string argument back
-  sCmd.addCommand("P",     processCommand);  // Converts two arguments to integers and echos them back
-  sCmd.setDefaultHandler(unrecognized);      // Handler for command that isn't matched  (says "What?")
+  s2Cmd.addCommand("ON",    LED_on);          // Turns LED on
+  s2Cmd.addCommand("OFF",   LED_off);         // Turns LED off
+  s2Cmd.addCommand("HELLO", sayHello);        // Echos the string argument back
+  s2Cmd.addCommand("P",     processCommand);  // Converts two arguments to integers and echos them back
+  s2Cmd.setDefaultHandler(unrecognized);      // Handler for command that isn't matched  (says "What?")
   Serial.println("Ready");
 }
 
 void loop() {
-  sCmd.readSerial();     // We don't do much, just process serial commands
+  s2Cmd.readSerial();     // We don't do much, just process serial commands
 }
 
 
@@ -40,7 +42,7 @@ void LED_off() {
 
 void sayHello() {
   char *arg;
-  arg = sCmd.next();    // Get the next argument from the SerialCommand object buffer
+  arg = s2Cmd.next();    // Get the next argument from the SerialCommand object buffer
   if (arg != NULL) {    // As long as it existed, take it
     Serial.print("Hello ");
     Serial.println(arg);
@@ -56,7 +58,7 @@ void processCommand() {
   char *arg;
 
   Serial.println("We're in processCommand");
-  arg = sCmd.next();
+  arg = s2Cmd.next();
   if (arg != NULL) {
     aNumber = atoi(arg);    // Converts a char string to an integer
     Serial.print("First argument was: ");
@@ -66,7 +68,7 @@ void processCommand() {
     Serial.println("No arguments");
   }
 
-  arg = sCmd.next();
+  arg = s2Cmd.next();
   if (arg != NULL) {
     aNumber = atol(arg);
     Serial.print("Second argument was: ");
