@@ -71,8 +71,8 @@ void Serial2Command::setDefaultHandler(void (*function)(const char *)) {
  * buffer for a prefix command, and calls handlers setup by addCommand() member
  */
 void Serial2Command::readSerial() {
-  while (Serial.available() > 0) {
-    char inChar = Serial.read();   // Read single available character, there may be more waiting
+  while (Serial2.available() > 0) {
+    char inChar = Serial2.read();   // Read single available character, there may be more waiting
     #ifdef SERIAL2COMMAND_DEBUG
       Serial.print(inChar);   // Echo back to serial stream
     #endif
