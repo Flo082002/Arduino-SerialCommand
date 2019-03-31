@@ -15,6 +15,7 @@ void setup() {
   digitalWrite(arduinoLED, LOW);    // default to LED off
 
   Serial.begin(9600);
+  Serial2.begin(9600);
 
   // Setup callbacks for SerialCommand commands
   s2Cmd.addCommand("ON",    LED_on);          // Turns LED on
