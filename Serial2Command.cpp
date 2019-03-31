@@ -21,12 +21,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "SerialCommand.h"
+#include "Serial2Command.h"
 
 /**
  * Constructor makes sure some things are set.
  */
-Serial2Command::SerialCommand()
+Serial2Command::Serial2Command()
   : commandList(NULL),
     commandCount(0),
     defaultHandler(NULL),
