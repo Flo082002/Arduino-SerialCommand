@@ -44,7 +44,7 @@
 
 class Serial2Command {
   public:
-    SerialCommand();      // Constructor
+    Serial2Command();      // Constructor
     void addCommand(const char *command, void(*function)());  // Add a command to the processing dictionary.
     void setDefaultHandler(void (*function)(const char *));   // A handler to call when no valid command received.
 
