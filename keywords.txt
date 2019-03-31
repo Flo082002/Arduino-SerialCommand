@@ -4,6 +4,8 @@
 
 SerialCommand	KEYWORD1
 
+Serial2Command	KEYWORD1
+
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
